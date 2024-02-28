@@ -29,17 +29,17 @@ import { useForm } from 'react-hook-form'
 import { Input } from './ui/input'
 import { Textarea } from './ui/textarea'
 import { toast } from './ui/use-toast'
-import { formSchema, formShcemaType } from '../../schemas/form'
+import { formSchema, formSchemaType } from '../../schemas/form'
 import { CreateForm } from '../../actions/form'
 import { useRouter } from 'next/navigation'
 
 function CreateFormButton() {
     const router = useRouter()
-    const form = useForm<formShcemaType>({
+    const form = useForm<formSchemaType>({
         resolver : zodResolver(formSchema)
     })
 
-    async function handleSubmit(values : formShcemaType){
+    async function handleSubmit(values : formSchemaType){
         try {
             const formId = await CreateForm(values)
             toast({
